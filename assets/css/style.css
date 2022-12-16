@@ -1,0 +1,49 @@
+/* Roots bloody roots */
+:root {
+    --blue: #0069d9;
+    --darkBlue: #0e253d;
+}
+
+/* General  */
+*, body {
+    margin: 0;
+    box-sizing: content-box;
+
+}
+
+header, h1 {
+    background: rgb(43,148,209);
+background: linear-gradient(90deg, rgba(43,148,209,1) 9%, rgba(46,45,136,1) 49%);
+color: white;
+margin: 0;
+text-align: center;
+height: 70px;
+}
+
+/* Aside */
+
+.container-fluid {
+    margin: 0;
+}
+
+.mainAndAside {
+    flex-wrap: nowrap;
+}
+
+#history button  {
+    margin: 5px;
+    width: 200px;
+}
+
+/* Today Section */
+#today {
+    border: 1px solid black;
+}
+
+
+
+/* Forecast */
+.forecast{
+    display: flex;
+    text-align: center;
+}
