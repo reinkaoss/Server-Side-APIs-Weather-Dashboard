@@ -29,20 +29,31 @@ var humidity = response.main.humidity + "%"
 
 var input = $('#search-input').val();
 var city = response.name;
-$('#output').text(city + " " + moment().format("dddd, MMMM Do YYYY"));
-$('article').append(city)
+$('#output').text(city);
+$('#date').text(moment().format("dddd, MMMM Do YYYY"));
 $('.temp').text(weatherNew)
 $('.wind').text(wind)
 $('.humidity').text(humidity)
 // $('.temp').append(city)
-    
+// for (var i = 0; i < 6; i++)
+// if(i < 6)
+// $('.history').text(input)
+// else {
+// i = 0;
+// }
+for (var i = 0; i < 6; i++)
+if(i < 6)
+// input = input[0].toUpperCase();
+var histButton = $('<button>').text(input)
+$(histButton).addClass('btn btn-primary btn-sm');
+$('#history').append(histButton);
 
+});
 
 });
 // console.log(response.city)
 
-    
-});
+
 
 
 function renderButtons() {
