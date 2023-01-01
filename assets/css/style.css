@@ -75,3 +75,26 @@ margin-bottom: 20px;
 button::first-letter {
         text-transform:capitalize;
     }
+
+.card {
+    margin: 5px;
+}
+
+.fiveDays, .row {
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+@media only screen and (max-width: 600px) {
+    .fiveDays, .row, .mainAndAside  {
+        flex-wrap: wrap;
+    }
+  }
+
+@media only screen and (max-width: 600px) {  
+.list-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+}
