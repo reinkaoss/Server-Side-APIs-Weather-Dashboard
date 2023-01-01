@@ -21,7 +21,7 @@ background: linear-gradient(90deg, rgba(43,148,209,1) 9%, rgba(46,45,136,1) 49%)
 color: white;
 margin: 0;
 text-align: center;
-height: 70px;
+height: auto;
 margin-bottom: 20px;
 }
 
