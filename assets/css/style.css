@@ -57,9 +57,12 @@ margin-bottom: 20px;
 }
 
 /* Forecast */
-.forecast{
+.forecast, .forecastRow{
     display: flex;
     text-align: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    color: black;
 }
 
 .input-group {
@@ -78,13 +81,16 @@ button::first-letter {
 
 .card {
     margin: 5px;
+    background-color: #0e253d;
 }
 
-.fiveDays, .row {
+.fiveDays, .fiveDaysCards {
     justify-content: center;
     flex-wrap: nowrap;
+    color: aliceblue;
 }
 
+/* Media Queries */
 @media only screen and (max-width: 600px) {
     .fiveDays, .row, .mainAndAside  {
         flex-wrap: wrap;

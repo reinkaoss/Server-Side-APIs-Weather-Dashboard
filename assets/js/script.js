@@ -19,6 +19,7 @@ $("#mainSearch").on("click", function (event) {
     var wind = response.list[0].wind.speed + "KPH";
     var humidity = response.list[0].main.humidity + "%";
 
+    console.log(response)
     // Getting weather icon
     var iconCode = response.list[0].weather[0].icon;
 
@@ -77,7 +78,6 @@ $("#mainSearch").on("click", function (event) {
       temp = temp.toFixed(0);
       // format the temperature as a string
       var tempString = temp + "°C";
-      // update the text of the element with the class "tempForecast"
       $(tempElements[index]).text("Temperature " + tempString);
     });
 
