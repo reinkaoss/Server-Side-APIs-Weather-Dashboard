@@ -7,6 +7,7 @@ var API_KEY = '&APPID=a09dbdd9e81585fea0ea468d539562cf';
 $("#mainSearch").on("click", function (event) {
   event.preventDefault();
   var input = $("#search-input").val();
+  var histButtonList = JSON.parse(localStorage.getItem("historyList"));
   weatherAPIFunction(input);
 });
 
@@ -22,6 +23,7 @@ function weatherAPIFunction(input) {
     weatherNew = weather.toFixed(0) + "°C";
     var wind = response.list[0].wind.speed + "KPH";
     var humidity = response.list[0].main.humidity + "%";
+
 
     // Getting weather icon
     var iconCode = response.list[0].weather[0].icon;
@@ -41,19 +43,33 @@ function weatherAPIFunction(input) {
     $(".wind").text("Wind: " + wind);
     $(".humidity").text("humidity: " + humidity);
 
+    // Generating the main view
     // var input = $("#search-input").val();
-    var histButtonList = [];
-    for (var i = 0; i < 1; i++) {
-      var histButton = $("<button>").text(input); 
-      if(!(histButton in histButtonList)) {
-        histButtonList.push(histButton)
-        $("#history").append(histButton);
-      $(histButton).attr("id", "histSearch");
-      $(histButton).attr("data", input);
-      $(histButton).addClass("btn btn-primary btn-sm");
-      localStorage.setItem('userInput', JSON.stringify(histButton.text()))
-    }
-}
+    var city = response.city.name;
+    $("#output").text(city);
+    $("#date").text(moment().format("dddd, MMMM Do YYYY"));
+    $(".temp").text("Temperature: " + weatherNew);
+    $(".wind").text("Wind: " + wind);
+    $(".humidity").text("humidity: " + humidity);
+  
+    // check if the input already exists in the history list
+// var input = $("#search-input").val();
+var histButtonList = [];
+// check if the input already exists in the history list
+if (!histButtonList.includes(input))  {
+  // create a new button
+  var histButton = $("<button>").text(input);
+  // add the input value to the history list
+  histButtonList.push(input);
+  // add the button to the history div
+  $("#history").append(histButton);
+  $(histButton).attr("id", "histSearch");
+  $(histButton).attr("data", input);
+  $(histButton).addClass("btn btn-primary btn-sm");
+  localStorage.setItem("historyList", JSON.stringify(histButtonList));
+
+    console.log(histButtonList)
+
     // Get next 5 days with moment js
     var dates = [];
     for (var i = 1; i <= 6; i++) {
@@ -66,6 +82,7 @@ function weatherAPIFunction(input) {
     });
 
     // Updating 5 days forecast from main input
+    var city = response.city.name;
     $(".card-title").text(city);
 
     // Loop through 5 days temperatures
@@ -104,10 +121,6 @@ function weatherAPIFunction(input) {
       $(windForecastEl[index]).text("Wind: " + wind + "KPH")
     );
 
-// 5 days forecast icons
-// var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-
-
 // Loop through 5 days icons
 var iconForecastEl = $("#weathericonForecast");
 
@@ -125,6 +138,7 @@ iconEl.forEach((icon, index) => {
   // Set the src attribute of the image element
   $(iconForecastEl[index]).attr("src", iconUrl);
 });
+}
 
 $(histButton).on("click", function (event) {
     event.preventDefault();
@@ -133,21 +147,30 @@ $(histButton).on("click", function (event) {
       });    
     });
 }
-
 $(document).ready(function () {
 
   var input = (JSON.parse(localStorage.getItem("userInput")));
 
-  if (input) {
-    histButton = $("<button>").text(input);
-    $("#history").append(histButton);
-    $(histButton).attr("id", "histSearch");
-    $(histButton).addClass("btn btn-primary btn-sm");
-    weatherAPIFunction(input);
+  if (localStorage.getItem("historyList")) {
+    // retrieve the history list from localStorage
+    histButtonList = JSON.parse(localStorage.getItem("historyList"));
+    // loop through the history list
+    histButtonList.forEach((input) => {
+      // create a button for each input on page load
+      var histButton = $("<button>").text(input);
+      // add the button to the history div
+      $("#history").append(histButton);
+      $(histButton).attr("id", "histSearch");
+      $(histButton).attr("data", input);
+      $(histButton).addClass("btn btn-primary btn-sm");
+      weatherAPIFunction(input);
+    });
   }
 });
 
 function renderButtons() {
   $("#search-input").empty();
+  $('#histSearch').empty();
 }
+
 renderButtons();
