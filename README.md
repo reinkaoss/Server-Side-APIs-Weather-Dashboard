@@ -14,13 +14,6 @@ This is a weather forecasting application that allows users to search for and vi
 * TypeScript for type checking and improved code organization
 * Moment.js for date and time formatting
 
-## Running the project
-* Clone this repository
-* Navigate to the root directory of the project
-* Run npm install to install the dependencies
-* Run npm run build to build the TypeScript code
-* Open the index.html file in your browser
-
 ## Usage
 
 Visit the [deployed application](https://reinkaoss.github.io/Server-Side-APIs-Weather-Dashboard/)
