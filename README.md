@@ -1,8 +1,25 @@
-# Server Side APIs Weather-Dashboard 
+# Weather Forecast
+This is a weather forecasting application that allows users to search for and view the current weather and 5-day forecast for a given city. The weather data is provided by the OpenWeatherMap API.
 
-## Description
+## Features
+* Search for the current weather and 5-day forecast for a given city
+* View the current temperature, wind speed, and humidity for a city
+* View the temperature, wind speed, and humidity for the next 5 days for a city
+* View an icon representing the current weather condition for a city
 
-[ADD INFO HERE]
+## Technologies
+
+### This application is built with:
+* jQuery for DOM manipulation and event handling
+* TypeScript for type checking and improved code organization
+* Moment.js for date and time formatting
+
+## Running the project
+* Clone this repository
+* Navigate to the root directory of the project
+* Run npm install to install the dependencies
+* Run npm run build to build the TypeScript code
+* Open the index.html file in your browser
 
 ## Usage
 
